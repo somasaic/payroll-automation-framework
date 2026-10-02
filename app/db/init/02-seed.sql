@@ -1,0 +1,67 @@
+-- Seed data: 5 salary structures, 50 employees (3 inactive) and 3 login users.
+-- Data is deterministic so tests can assert on exact values.
+
+INSERT INTO salary_structures (code, name, basic_salary, housing_allowance, transport_allowance, pension_rate) VALUES
+  ('G1', 'Grade 1 - Associate',  3000.00,  600.00, 200.00, 5.00),
+  ('G2', 'Grade 2 - Professional', 4500.00,  900.00, 250.00, 5.00),
+  ('G3', 'Grade 3 - Senior',     6500.00, 1300.00, 300.00, 6.00),
+  ('G4', 'Grade 4 - Manager',    8500.00, 1700.00, 400.00, 7.00),
+  ('G5', 'Grade 5 - Executive', 14000.00, 2800.00, 600.00, 8.00);
+
+INSERT INTO employees (employee_code, first_name, last_name, email, department, job_title, hire_date, status, salary_structure_id) VALUES
+  ('E001', 'James', 'Smith', 'james.smith@acme-demo.test', 'Executive', 'Chief Executive Officer', '2015-01-01', 'active', (SELECT id FROM salary_structures WHERE code = 'G5')),
+  ('E002', 'Mary', 'Johnson', 'mary.johnson@acme-demo.test', 'Finance', 'Accountant', '2022-06-04', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E003', 'Robert', 'Williams', 'robert.williams@acme-demo.test', 'Human Resources', 'HR Generalist', '2018-11-07', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E004', 'Patricia', 'Brown', 'patricia.brown@acme-demo.test', 'Sales', 'Account Executive', '2025-04-10', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E005', 'John', 'Jones', 'john.jones@acme-demo.test', 'Operations', 'Operations Analyst', '2021-09-13', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E006', 'Jennifer', 'Garcia', 'jennifer.garcia@acme-demo.test', 'Engineering', 'Senior Software Engineer', '2017-02-16', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E007', 'Michael', 'Miller', 'michael.miller@acme-demo.test', 'Finance', 'Payroll Specialist', '2024-07-19', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E008', 'Linda', 'Davis', 'linda.davis@acme-demo.test', 'Human Resources', 'Recruiter', '2020-12-22', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E009', 'David', 'Rodriguez', 'david.rodriguez@acme-demo.test', 'Sales', 'Sales Manager', '2016-05-25', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E010', 'Elizabeth', 'Martinez', 'elizabeth.martinez@acme-demo.test', 'Operations', 'Office Manager', '2023-10-28', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E011', 'William', 'Hernandez', 'william.hernandez@acme-demo.test', 'Engineering', 'QA Engineer', '2019-03-03', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E012', 'Barbara', 'Lopez', 'barbara.lopez@acme-demo.test', 'Finance', 'Finance Manager', '2015-08-06', 'active', (SELECT id FROM salary_structures WHERE code = 'G4')),
+  ('E013', 'Richard', 'Gonzalez', 'richard.gonzalez@acme-demo.test', 'Human Resources', 'HR Manager', '2022-01-09', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E014', 'Susan', 'Wilson', 'susan.wilson@acme-demo.test', 'Sales', 'Account Executive', '2018-06-12', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E015', 'Joseph', 'Anderson', 'joseph.anderson@acme-demo.test', 'Operations', 'Operations Analyst', '2025-11-15', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E016', 'Jessica', 'Thomas', 'jessica.thomas@acme-demo.test', 'Engineering', 'Engineering Manager', '2021-04-18', 'active', (SELECT id FROM salary_structures WHERE code = 'G4')),
+  ('E017', 'Thomas', 'Taylor', 'thomas.taylor@acme-demo.test', 'Finance', 'Accountant', '2017-09-21', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E018', 'Sarah', 'Moore', 'sarah.moore@acme-demo.test', 'Human Resources', 'HR Generalist', '2024-02-24', 'inactive', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E019', 'Charles', 'Jackson', 'charles.jackson@acme-demo.test', 'Sales', 'Sales Manager', '2020-07-27', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E020', 'Karen', 'Martin', 'karen.martin@acme-demo.test', 'Operations', 'Office Manager', '2016-12-02', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E021', 'Priya', 'Sharma', 'priya.sharma@acme-demo.test', 'Engineering', 'Software Engineer', '2023-05-05', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E022', 'Rahul', 'Patel', 'rahul.patel@acme-demo.test', 'Finance', 'Payroll Specialist', '2019-10-08', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E023', 'Ananya', 'Iyer', 'ananya.iyer@acme-demo.test', 'Human Resources', 'Recruiter', '2015-03-11', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E024', 'Arjun', 'Reddy', 'arjun.reddy@acme-demo.test', 'Sales', 'Account Executive', '2022-08-14', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E025', 'Mei', 'Chen', 'mei.chen@acme-demo.test', 'Operations', 'Operations Analyst', '2018-01-17', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E026', 'Wei', 'Wang', 'wei.wang@acme-demo.test', 'Engineering', 'Senior Software Engineer', '2025-06-20', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E027', 'Yuki', 'Tanaka', 'yuki.tanaka@acme-demo.test', 'Finance', 'Finance Manager', '2021-11-23', 'active', (SELECT id FROM salary_structures WHERE code = 'G4')),
+  ('E028', 'Hiroshi', 'Sato', 'hiroshi.sato@acme-demo.test', 'Human Resources', 'HR Manager', '2017-04-26', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E029', 'Fatima', 'Khan', 'fatima.khan@acme-demo.test', 'Sales', 'Sales Manager', '2024-09-01', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E030', 'Omar', 'Hassan', 'omar.hassan@acme-demo.test', 'Operations', 'Office Manager', '2020-02-04', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E031', 'Sofia', 'Rossi', 'sofia.rossi@acme-demo.test', 'Engineering', 'QA Engineer', '2016-07-07', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E032', 'Mateo', 'Fernandez', 'mateo.fernandez@acme-demo.test', 'Finance', 'Accountant', '2023-12-10', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E033', 'Lucia', 'Silva', 'lucia.silva@acme-demo.test', 'Human Resources', 'HR Generalist', '2019-05-13', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E034', 'Diego', 'Torres', 'diego.torres@acme-demo.test', 'Sales', 'Account Executive', '2015-10-16', 'inactive', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E035', 'Emma', 'Dubois', 'emma.dubois@acme-demo.test', 'Operations', 'Operations Analyst', '2022-03-19', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E036', 'Liam', 'Murphy', 'liam.murphy@acme-demo.test', 'Engineering', 'Engineering Manager', '2018-08-22', 'active', (SELECT id FROM salary_structures WHERE code = 'G4')),
+  ('E037', 'Olivia', 'Kelly', 'olivia.kelly@acme-demo.test', 'Finance', 'Payroll Specialist', '2025-01-25', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E038', 'Noah', 'Walsh', 'noah.walsh@acme-demo.test', 'Human Resources', 'Recruiter', '2021-06-28', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E039', 'Ava', 'Novak', 'ava.novak@acme-demo.test', 'Sales', 'Sales Manager', '2017-11-03', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E040', 'Ethan', 'Clark', 'ethan.clark@acme-demo.test', 'Operations', 'Office Manager', '2024-04-06', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E041', 'Chloe', 'Lee', 'chloe.lee@acme-demo.test', 'Engineering', 'Software Engineer', '2020-09-09', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E042', 'Lucas', 'Muller', 'lucas.muller@acme-demo.test', 'Finance', 'Finance Manager', '2016-02-12', 'active', (SELECT id FROM salary_structures WHERE code = 'G4')),
+  ('E043', 'Amara', 'Okafor', 'amara.okafor@acme-demo.test', 'Human Resources', 'HR Manager', '2023-07-15', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E044', 'Kwame', 'Mensah', 'kwame.mensah@acme-demo.test', 'Sales', 'Account Executive', '2019-12-18', 'active', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E045', 'Ingrid', 'Larsen', 'ingrid.larsen@acme-demo.test', 'Operations', 'Operations Analyst', '2015-05-21', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E046', 'Lars', 'Nilsson', 'lars.nilsson@acme-demo.test', 'Engineering', 'Senior Software Engineer', '2022-10-24', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E047', 'Elena', 'Popescu', 'elena.popescu@acme-demo.test', 'Finance', 'Accountant', '2018-03-27', 'inactive', (SELECT id FROM salary_structures WHERE code = 'G2')),
+  ('E048', 'Ivan', 'Petrov', 'ivan.petrov@acme-demo.test', 'Human Resources', 'HR Generalist', '2025-08-02', 'active', (SELECT id FROM salary_structures WHERE code = 'G1')),
+  ('E049', 'Grace', 'Kim', 'grace.kim@acme-demo.test', 'Sales', 'Sales Manager', '2021-01-05', 'active', (SELECT id FROM salary_structures WHERE code = 'G3')),
+  ('E050', 'Samuel', 'Adams', 'samuel.adams@acme-demo.test', 'Operations', 'Office Manager', '2017-06-08', 'active', (SELECT id FROM salary_structures WHERE code = 'G1'));
+
+-- Passwords are hashed with bcrypt via pgcrypto; the app verifies them with bcryptjs.
+INSERT INTO users (username, password_hash, role, employee_id) VALUES
+  ('admin',     crypt('admin123',    gen_salt('bf', 10)), 'admin',    NULL),
+  ('employee',  crypt('employee123', gen_salt('bf', 10)), 'employee', (SELECT id FROM employees WHERE employee_code = 'E002')),
+  ('employee2', crypt('employee123', gen_salt('bf', 10)), 'employee', (SELECT id FROM employees WHERE employee_code = 'E003'));
